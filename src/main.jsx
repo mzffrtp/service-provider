@@ -18,11 +18,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ToastContainer />
     <Provider store={store}>
-    <AuthTokenContextProvider>
-      <ThemeContextProvider>
-        <App />
-      </ThemeContextProvider>
-    </AuthTokenContextProvider>
-  </Provider>
+      <AuthTokenContextProvider>
+        <ThemeContextProvider>
+          <App />
+        </ThemeContextProvider>
+      </AuthTokenContextProvider>
+    </Provider>
   </React.StrictMode >,
 )

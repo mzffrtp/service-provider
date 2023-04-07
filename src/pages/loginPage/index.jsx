@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import { AuthTokenContext } from "../../components/context/authTokenContextProvider";
 
 import useApi from "../../hooks/useApi";
 
 export default function LoginPage() {
     const api = useApi();
-
+    const authTokenContextValue = useContext(AuthTokenContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const jsonData = new FormData(e.target)
-        const jsonForm = Object.fromEntries(jsonData.entries());
+        const formData = new FormData(e.target)
+        const jsonForm = Object.fromEntries(formData.entries());
 
         api
             .post("auth/login", jsonForm)
             .then((res) => {
-                console.log(">> Api Resp", response);
+                authTokenContextValue.setToken(res.data.data.token)
                 toast.success('Login successfull!', {
                     position: "top-right",
                     autoClose: 5000,
@@ -58,7 +59,7 @@ export default function LoginPage() {
                             <Form.Control type="password" name="password" ></Form.Control>
                         </Form.Group>
                         <Container className="d-flex justify-content-center">
-                            <Button className="my-3" variant="outline-success">Submit</Button>
+                            <Button className="my-3" variant="outline-success" type="submit">Submit</Button>
                         </Container>
                     </Col>
                 </Row>

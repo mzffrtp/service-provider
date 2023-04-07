@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthTokenContext } from "../context/authTokenContextProvider";
 
 export default function Footer() {
+  const AuthTokenContextValue = useContext(AuthTokenContext)
   return (
     <Container>
       <footer className="pt-4 my-md-5 pt-md-5 border-top">
@@ -25,6 +27,7 @@ export default function Footer() {
             <small className="d-block my-3 text-center text-muted">© by muzaffer t 2023</small>
           </div>
         </div>
+        <p>token: {AuthTokenContextValue.token}</p>
       </footer>
     </Container>
   )
