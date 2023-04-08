@@ -9,9 +9,9 @@ export const userSlice = createSlice({
     initialState,
     reducers:{
         setUserData:(state,action) =>{
-            console.log("reducer  user data", state, action);
             state.userData = action.payload
         },
+
 
         removeUserData:(state, action) => {
             state.userData = null

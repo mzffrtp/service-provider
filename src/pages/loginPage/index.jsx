@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthTokenContext } from "../../components/context/authTokenContextProvider";
 
@@ -8,6 +9,7 @@ import useApi from "../../hooks/useApi";
 export default function LoginPage() {
     const api = useApi();
     const authTokenContextValue = useContext(AuthTokenContext);
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,6 +46,7 @@ export default function LoginPage() {
                     theme: "dark",
                     });
             })
+            navigate("/")
     }
     return (
         <>
