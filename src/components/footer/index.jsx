@@ -27,7 +27,6 @@ export default function Footer() {
             <small className="d-block my-3 text-center text-muted">© by muzaffer t 2023</small>
           </div>
         </div>
-        <p>token: {AuthTokenContextValue.token}</p>
       </footer>
     </Container>
   )

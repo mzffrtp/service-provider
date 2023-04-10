@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthTokenContext } from "../../components/context/authTokenContextProvider";
 
 import useApi from "../../hooks/useApi";
+import { setUserData } from "../../redux/userSlice";
 
 export default function LoginPage() {
     const api = useApi();
     const authTokenContextValue = useContext(AuthTokenContext);
     const navigate = useNavigate()
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,6 +24,7 @@ export default function LoginPage() {
             .post("auth/login", jsonForm)
             .then((res) => {
                 authTokenContextValue.setToken(res.data.data.token)
+                dispatch(setUserData(res.data.data.userData))
                 toast.success('Login successfull!', {
                     position: "top-right",
                     autoClose: 5000,
@@ -46,7 +50,7 @@ export default function LoginPage() {
                     theme: "dark",
                     });
             })
-            navigate("/")
+        navigate("/")
     }
     return (
         <>

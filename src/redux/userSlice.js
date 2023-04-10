@@ -12,7 +12,6 @@ export const userSlice = createSlice({
             state.userData = action.payload
         },
 
-
         removeUserData:(state, action) => {
             state.userData = null
         }
