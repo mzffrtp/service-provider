@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthTokenContext } from "../context/authTokenContextProvider";
-import { Badge, Button, Container, Col, Row } from "react-bootstrap";
+import { Button, Container, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useContext } from "react";
 import { removeUserData } from "../../redux/userSlice";
@@ -64,10 +64,10 @@ export default function Header() {
             ) : (
               <Row className="d-flex justify-content-center">
                 <Button variant="warning" className="mb-2">
-                  <i class="fa-regular fa-circle-user me-1"></i>{userState.userData.firstname}</Button>
+                  <i className="fa-regular fa-circle-user me-1"></i>{userState.userData.firstname}</Button>
                 <Button variant="danger"
                   onClick={onLogoutBtnClick} >
-                  <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Logout</Button>
+                  <i className="fa-solid fa-arrow-right-from-bracket me-1"></i>Logout</Button>
               </Row>
 
             )
