@@ -10,6 +10,7 @@ import HomePage from './pages/homepage';
 import LoginPage from './pages/loginPage';
 import RegisterPage from './pages/registerPage';
 import { setCategories } from './redux/categoriesSlice';
+import styles from "../src/App.module.css"
 
 function App() {
   const { categoriesState } = useSelector((state) => state);

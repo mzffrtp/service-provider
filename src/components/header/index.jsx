@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useContext } from "react";
 import { removeUserData } from "../../redux/userSlice";
 import useSwal from "../../hooks/useSwal";
+import { ThemeContext } from "../context/themeContextProvider";
 
 
 export default function Header() {
   const { userState } = useSelector(state => state)
   const authTokenContextValue = useContext(AuthTokenContext);
+  const {theme, setTheme} = useContext(ThemeContext)
   const dispatch = useDispatch();
   const swal = useSwal();
   const navigate = useNavigate();
@@ -41,14 +43,16 @@ export default function Header() {
 
   }
   return (
-    <Container>
+    <Container className="{`Header ${theme}`}">
       <div className="d-flex justify-content-between flex-md-row align-items-center p-1 px-md-4 mb-3 my-2 bg-white border-bottom box-shadow">
         <h5 className="my-0 mr-md-auto font-weight-normal">Service Park</h5>
         <nav className="my-2 my-md-0 mr-md-3">
           <Link
             to={"/"}
             className="p-2 btn btn-outline-info text-dark me-2">Services</Link>
-          <Button variant="outline-info" className="p-2 me-3 text-dark" href="#">Moogle</Button>
+          <Button 
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          variant="outline-info" className="p-2 me-3 text-dark" href="#">Moogle</Button>
         </nav>
         <nav>
           {
