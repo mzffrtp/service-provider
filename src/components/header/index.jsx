@@ -52,7 +52,7 @@ export default function Header() {
             className="p-2 btn btn-outline-info text-dark me-2">Services</Link>
           <Button 
           onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-          variant="outline-info" className="p-2 me-3 text-dark" href="#">Moogle</Button>
+          variant="outline-info" className="p-2 me-3 text-dark" href="#"><i className="fa-regular fa-sun me-3"></i><i className="fa-regular fa-moon"></i></Button>
         </nav>
         <nav>
           {
